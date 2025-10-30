@@ -1,9 +1,8 @@
 #include "types.hpp"
-
-#include <iostream>
+#include "debug.hpp"
 
 i32	main()
 {
-	std::cout << "Hello World!" << std::endl;
+	printLog(LogType::Message, "Hello World!");
 	return (0);
 }

@@ -7,7 +7,7 @@ EXE				:=	scop
 
 # Directories
 SRC_DIR			:=	src
-INC_DIR			:=	includes
+INC_DIR			:=	src/utils includes
 OBJ_DIR			:=	obj
 
 # Compiler and Flags
@@ -19,7 +19,8 @@ CLR_GREEN		:=	\033[1;32m
 CLR_RESET		:=	\033[0m
 
 # Files
-SRCS			:=	main.cpp
+SRCS			:=	main.cpp \
+					utils/debug.cpp
 
 SRC_FILES		:=	${addprefix ${SRC_DIR}/,${SRCS}}
 INC_FILES		:=	${addprefix -I,${INC_DIR}}
