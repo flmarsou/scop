@@ -27,6 +27,7 @@ CLR_RESET		:=	\033[0m
 # Files
 SRCS			:=	main.cpp \
 					core/Window.cpp \
+					core/Input.cpp \
 					utils/debug.cpp
 
 C_SRCS			:=	external/GLAD/glad.c
@@ -48,13 +49,13 @@ ${EXE}			:	${OBJ_FILES}
 					${CXX} ${CXXFLAGS} ${OBJ_FILES} -o ${EXE} ${LIBS}
 					@echo "${CLR_GREEN}Build complete!${CLR_RESET}"
 
-# Compiles C++ files
+# Compile C++ files
 ${OBJ_DIR}/%.o	:	${SRC_DIR}/%.cpp
 					@mkdir -p ${dir $@}
 					@echo "${CLR_BLUE}Compiling $<...${CLR_RESET}"
 					@${CXX} ${CXXFLAGS} ${INC_FILES} -c $< -o $@
 
-# Compiles C files
+# Compile C files
 ${OBJ_DIR}/%.o	:	%.c
 					@mkdir -p ${dir $@}
 					@echo "${CLR_BLUE}Compiling $<...${CLR_RESET}"

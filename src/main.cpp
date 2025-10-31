@@ -2,6 +2,7 @@
 #include "debug.hpp"
 
 #include "Window.hpp"
+#include "Input.hpp"
 
 i32	main()
 {
@@ -18,6 +19,8 @@ i32	main()
 		ret = 1;
 		goto terminate_scop;
 	}
+
+	Input::Init(window.GetWin());
 
 	while (!window.ShouldClose())
 	{
