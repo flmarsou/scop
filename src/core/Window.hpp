@@ -17,6 +17,9 @@ class	Window
 		i8			*GetTitle() const;
 		void		SetTitle(i8 *title);
 
+		i32			GetWidth() const;
+		i32			GetHeight() const;
+
 		// Methods
 		bool	ShouldClose() const;
 		void	Clear() const;
@@ -26,4 +29,8 @@ class	Window
 	private:
 		GLFWwindow	*_win;
 		i8			*_title;
+
+		static void	setFramebufferSizeCallback(GLFWwindow *window, i32 width, i32 height);
+		static i32	_width;
+		static i32	_height;
 };
