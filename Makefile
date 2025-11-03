@@ -7,7 +7,7 @@ EXE				:=	scop
 
 # Directories
 SRC_DIR			:=	src
-INC_DIR			:=	src/core src/utils includes external
+INC_DIR			:=	src/core src/utils src/utils/math includes external
 OBJ_DIR			:=	obj
 
 # Compiler and Flags
@@ -28,7 +28,9 @@ CLR_RESET		:=	\033[0m
 SRCS			:=	main.cpp \
 					core/Window.cpp \
 					core/Input.cpp \
-					utils/debug.cpp
+					utils/debug.cpp \
+					utils/math/Vect2.cpp \
+					utils/math/Vect3.cpp
 
 C_SRCS			:=	external/GLAD/glad.c
 
