@@ -167,3 +167,13 @@ Vect3	Vect3::cross(const Vect3 &other) const
 				  z * other.x - x * other.z,
 				  x * other.y - y * other.x));
 }
+
+// ========================================================================== //
+//                                    Misc                                    //
+// ========================================================================== //
+
+std::ostream	&operator<<(std::ostream &out, const Vect3 &other)
+{
+	out << "[" << other.x << ',' << other.y << ',' << other.z << ']';
+	return (out);
+}

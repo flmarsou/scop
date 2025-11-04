@@ -160,3 +160,13 @@ Vect2	Vect2::normalized() const
 
 	return (len != 0 ? *this / len : *this);
 }
+
+// ========================================================================== //
+//                                    Misc                                    //
+// ========================================================================== //
+
+std::ostream	&operator<<(std::ostream &out, const Vect2 &other)
+{
+	out << "[" << other.x << ',' << other.y << ']';
+	return (out);
+}

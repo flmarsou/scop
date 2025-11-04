@@ -2,6 +2,8 @@
 
 # include "types.hpp"
 
+# include <ostream>
+
 struct	Vect3
 {
 	Vect3() : x(0.0f), y(0.0f), z(0.0f) {};
@@ -69,3 +71,5 @@ struct	Vect3
 	f32	y;
 	f32	z;
 };
+
+std::ostream	&operator<<(std::ostream &out, const Vect3 &other);
