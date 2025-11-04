@@ -3,15 +3,18 @@
 
 #include "Window.hpp"
 #include "Input.hpp"
+#include "ObjectManager.hpp"
 
 i32	main()
 {
-	bool	ret = 0;
-	Window	window;
+	bool			ret = 0;
+	Window			window;
+	ObjectManager	objectManager;
 
 	try
 	{
 		window.Init(1280, 720, "scop by flmarsou");
+		objectManager.loadObj("assets/test.obj");
 	}
 	catch(const std::exception &error)
 	{
