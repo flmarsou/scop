@@ -23,11 +23,14 @@ struct	Object
 class	ObjectManager
 {
 	public:
-		void	loadObj(const std::string &filePath);
+		void	Load(const std::string &filePath);
 
 	private:
 		void	parseO(std::istringstream &iss, Object *&currentObject);
 		void	parseV(std::istringstream &iss, Object *&currentObject);
+		void	parseF(std::istringstream &iss, Object *&currentObject);
+
+		void	printObject(const Object &object);
 
 		std::vector<Object>	_objects;
 

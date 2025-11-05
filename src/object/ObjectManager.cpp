@@ -1,16 +1,19 @@
 #include "ObjectManager.hpp"
 
+#include "debug.hpp"
+
 #include <fstream>
 #include <iostream>
 
 u32	ObjectManager::_objectIndex = 0;
 
-void	ObjectManager::loadObj(const std::string &filePath)
+void	ObjectManager::Load(const std::string &filePath)
 {
 	std::ifstream	file(filePath);
 	if (!file.is_open())
 		throw std::runtime_error("Failed to open OBJ file: " + filePath);
 
+	u32		currentAmount = _objects.size();
 	Object	*currentObject = nullptr;
 
 	std::string	line;
@@ -26,6 +29,14 @@ void	ObjectManager::loadObj(const std::string &filePath)
 			parseO(iss, currentObject);
 		else if (prefix == "v")
 			parseV(iss, currentObject);
+		else if (prefix == "f")
+			parseF(iss, currentObject);
+	}
+
+	while (currentAmount < _objects.size())
+	{
+		printObject(_objects[currentAmount]);
+		printLog(LogType::Info, "Object \"" + _objects[currentAmount++].name + "\" created");
 	}
 }
 
@@ -54,4 +65,36 @@ void	ObjectManager::parseV(std::istringstream &iss, Object *&currentObject)
 	iss >> vertices.x >> vertices.y >> vertices.z;
 
 	currentObject->vertices.push_back(vertices);
+}
+
+void	ObjectManager::parseF(std::istringstream &iss, Object *&currentObject)
+{
+	if (!currentObject)
+		return ;
+
+	Face	face;
+
+	std::string	token;
+	while (iss >> token)
+	{
+		i32	index = std::stoi(token);
+		face.indices.push_back(index - 1);
+	}
+
+	currentObject->faces.push_back(face);
+}
+
+void	ObjectManager::printObject(const Object &object)
+{
+	std::cout << "-> Name: " << object.name << '\n';
+	std::cout << "-> Vertices: " << '\n';
+	for (Vect3 vertices : object.vertices)
+		std::cout << "   " << vertices << '\n';
+	for (u32 face = 0; face < object.faces.size(); ++face)
+	{
+		std::cout << "-> Face[" << face << "]: ";
+		for (u32 index : object.faces[face].indices)
+			std::cout << index << " ";
+		std::cout << '\n';
+	}
 }
