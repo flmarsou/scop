@@ -29,6 +29,7 @@ SRCS			:=	main.cpp \
 					core/Window.cpp \
 					core/Input.cpp \
 					object/ObjectManager.cpp \
+					object/MeshManager.cpp \
 					utils/debug.cpp \
 					utils/math/Vect2.cpp \
 					utils/math/Vect3.cpp
