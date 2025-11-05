@@ -14,7 +14,8 @@ i32	main()
 	try
 	{
 		window.Init(1280, 720, "scop by flmarsou");
-		objectManager.loadObj("assets/test.obj");
+
+		objectManager.Load("assets/test.obj");
 	}
 	catch(const std::exception &error)
 	{
