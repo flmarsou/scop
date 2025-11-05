@@ -1,6 +1,9 @@
 #include "ObjectManager.hpp"
 
 #include <fstream>
+#include <iostream>
+
+u32	ObjectManager::_objectIndex = 0;
 
 void	ObjectManager::loadObj(const std::string &filePath)
 {
@@ -28,13 +31,13 @@ void	ObjectManager::loadObj(const std::string &filePath)
 
 void	ObjectManager::parseO(std::istringstream &iss, Object *&currentObject)
 {
-	std::string	name;
-	iss >> name;
-
 	_objects.emplace_back();
 	currentObject = &_objects.back();
 
-	currentObject->name = name;
+	std::string	name;
+	iss >> name;
+
+	currentObject->name = name.empty() ? "unnamedObject_" + std::to_string(_objectIndex++) : name;
 }
 
 void	ObjectManager::parseV(std::istringstream &iss, Object *&currentObject)
@@ -43,6 +46,8 @@ void	ObjectManager::parseV(std::istringstream &iss, Object *&currentObject)
 	{
 		_objects.emplace_back();
 		currentObject = &_objects.back();
+
+		currentObject->name = "unnamedObject_" + std::to_string(_objectIndex++);
 	}
 
 	Vect3	vertices;

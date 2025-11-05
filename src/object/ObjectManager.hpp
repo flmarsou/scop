@@ -30,4 +30,6 @@ class	ObjectManager
 		void	parseV(std::istringstream &iss, Object *&currentObject);
 
 		std::vector<Object>	_objects;
+
+		static u32	_objectIndex;
 };
