@@ -2,7 +2,7 @@ using Scop.Utils;
 
 namespace Scop.Object;
 
-public static class ObjectUtils
+public static class ObjUtils
 {
     public static List<string> FetchObjectFiles(string path)
     {

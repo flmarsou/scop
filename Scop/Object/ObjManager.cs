@@ -1,13 +1,13 @@
 namespace Scop.Object;
 
-public static class ObjectManager
+public static class ObjManager
 {
     private static readonly string ContextPath = Path.Combine(AppContext.BaseDirectory, "Assets", "Objects");
 
-    private static List<string> _objects = [];
+    private static List<string> _objectFiles = [];
 
     public static void Init()
     {
-        _objects = ObjectUtils.FetchObjectFiles(ContextPath);
+        _objectFiles = ObjUtils.FetchObjectFiles(ContextPath);
     }
 }
