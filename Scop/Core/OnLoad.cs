@@ -13,7 +13,7 @@ public partial class Program
 
         try
         {
-            ObjectManager.Init();
+            ObjManager.Init();
         }
         catch (Exception ex)
         {
