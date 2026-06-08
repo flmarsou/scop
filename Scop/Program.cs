@@ -17,9 +17,10 @@ public partial class Program
 
         _window = Window.Create(options);
 
-        _window.Load   += OnLoad;
-        _window.Update += OnUpdate;
-        _window.Render += OnRender;
+        _window.Load    += OnLoad;
+        _window.Update  += OnUpdate;
+        _window.Render  += OnRender;
+        _window.Closing += OnClosing;
 
         _window.Run();
     }
