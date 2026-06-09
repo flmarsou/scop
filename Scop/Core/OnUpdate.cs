@@ -6,8 +6,6 @@ namespace Scop;
 
 public partial class Program
 {
-    private static ObjModel? _selectedModel;
-
     private static void OnUpdate(double deltaTime)
     {
         if (InputManager.IsKeyDown(Key.Escape))
