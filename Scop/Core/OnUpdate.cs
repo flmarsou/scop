@@ -1,13 +1,12 @@
 using Scop.Input;
 using Scop.Object;
-using Scop.Utils;
 using Silk.NET.Input;
 
 namespace Scop;
 
 public partial class Program
 {
-    private static string? _selectedObject;
+    private static ObjModel? _selectedModel;
 
     private static void OnUpdate(double deltaTime)
     {
@@ -16,23 +15,14 @@ public partial class Program
 
         if (InputManager.IsKeyPressed(Key.R))
         {
-            try
-            {
-                ObjManager.Refresh();
-            }
-            catch (Exception ex)
-            {
-                Logger.Error(ex.ToString());
+            ObjManager.Refresh();
 
-                _window!.Close();
-            }
-
-            _selectedObject = ObjManager.GetCurrent();
+            _selectedModel = ObjParser.Parse(ObjManager.GetCurrent());
         }
         else if (InputManager.IsKeyPressed(Key.Left))
-            _selectedObject = ObjManager.GetPrev();
+            _selectedModel = ObjParser.Parse(ObjManager.GetPrev());
         else if (InputManager.IsKeyPressed(Key.Right))
-            _selectedObject = ObjManager.GetNext();
+            _selectedModel = ObjParser.Parse(ObjManager.GetNext());
 
         InputManager.Update();
     }

@@ -22,6 +22,6 @@ public partial class Program
             _window!.Close();
         }
 
-        _selectedObject = ObjManager.GetCurrent();
+        _selectedModel = ObjParser.Parse(ObjManager.GetCurrent());
     }
 }
