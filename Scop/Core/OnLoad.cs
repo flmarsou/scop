@@ -13,7 +13,7 @@ public partial class Program
 
         try
         {
-            ObjManager.Init();
+            ObjManager.Refresh();
         }
         catch (Exception ex)
         {
@@ -21,5 +21,7 @@ public partial class Program
 
             _window!.Close();
         }
+
+        _selectedObject = ObjManager.GetCurrent();
     }
 }
