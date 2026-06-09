@@ -27,15 +27,14 @@ public struct ObjFaceVertex(int vertexIndex, int? textureIndex, int? normalIndex
     public int? NormalIndex  = normalIndex;
 }
 
-public struct ObjFace(ObjFaceVertex[] vertices, string? material)
+public struct ObjFace()
 {
-    public ObjFaceVertex[] Vertices = vertices;
-    public string?         Material = material;
+    public List<ObjFaceVertex> Vertices = [];
 }
 
-public struct ObjGroup(string name)
+public struct ObjGroup(string? name)
 {
-    public string        Name = name;
+    public string?       Name  = name;
     public List<ObjFace> Faces = [];
 }
 
